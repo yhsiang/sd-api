@@ -22,6 +22,8 @@ http://taipeihope.herokuapp.com/v1
 
 # 開發
 
+需要安裝 [nodejs](http://nodejs.org/)
+
 1. `$ npm i`
 2. `$ npm start`
 
