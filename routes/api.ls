@@ -7,6 +7,14 @@ Api = Router!
 origin = 'http://taipeihope.tw'
 host = process.env.HOST || 'http://localhost:3000'
 
+Api.route '/'
+  .get (req, res) ->
+    res.json do
+      is-success: false
+      error-code: 404
+      error-message: "no API found,for more detail,please reference to our docs. ( #{host}/docs/ )",
+      data: null
+
 Api.route '/news'
   .get (req, res) ->
     {page} = req.query
@@ -34,6 +42,27 @@ Api.route '/news/:id'
       error-code: 0
       error-message: null
       data: [ getArticle body ]
+
+Api.route '/videos'
+  .get (req, res) ->
+    error, response, body <- request "http://taipeihope.tw/gallery.html"
+    res.json do
+      is-success: true
+      error-code: 0
+      error-message: null
+      data: getVideos body
+
+
+getVideos = (body) ->
+  $ = cheerio.load body
+  items = $ '.video-links > .col-md-4 > .intro-img > a' .map (,it) ->
+    link = $ it .attr 'href'
+    link = 'http:' + link if not link.match /^http/
+    do
+      link: link
+      title: $ it .children!attr 'alt'
+      img-src: $ it .children!attr 'src'
+  items .= to-array!
 
 getArticle = (body) ->
   $ = cheerio.load body
