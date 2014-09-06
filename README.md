@@ -6,15 +6,19 @@
 
 http://taipeihope.herokuapp.com/v1
 
-1. [/news](http://taipeihope.herokuapp.com/v1/news)
-2. [/news/:id](http://taipeihope.herokuapp.com/v1/news/59)
-3. [/videos](http://taipeihope.herokuapp.com/v1/videos)
-4. [/albums](http://taipeihope.herokuapp.com/v1/albums)
-5. [/albums/:id](http://taipeihope.herokuapp.com/v1/albums/set72157646850190108)
+1. 新聞中心 [/news](http://taipeihope.herokuapp.com/v1/news)
+2. 單篇新聞 [/news/:id](http://taipeihope.herokuapp.com/v1/news/59)
+3. 影音記錄 [/videos](http://taipeihope.herokuapp.com/v1/videos)
+4. 照片記錄 [/albums](http://taipeihope.herokuapp.com/v1/albums)
+5. 單本相簿 [/albums/:id](http://taipeihope.herokuapp.com/v1/albums/set72157646850190108)
+6. 市政白皮書 [/policies](http://taipeihope.herokuapp.com/v1/policies)
+7. 單篇市政 [/policies/:id](http://taipeihope.herokuapp.com/v1/policies/286)
+8. 市政顧問團 [/advisors](http://taipeihope.herokuapp.com/v1/advisors)
+9. 市民提案 [/proposals](http://taipeihope.herokuapp.com/v1/proposals)
+10. 單篇提案 [/proposals/:id](http://taipeihope.herokuapp.com/v1/proposals/106)
 
 # TODO
 
-1. 議題中心
 
 # 開發
 
