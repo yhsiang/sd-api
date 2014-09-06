@@ -1,9 +1,10 @@
 {
-  "name":"taipeihope-api",
+  "name": "taipeihope-api",
   "version": "0.1.0",
   "dependencies": {
     "LiveScript": "^1.2.0",
     "cheerio": "^0.17.0",
+    "cors": "^2.4.1",
     "express": "^4.8.8",
     "request": "^2.42.0"
   },

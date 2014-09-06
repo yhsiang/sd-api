@@ -1,8 +1,9 @@
-require! <[ express ./routes/api ]>
+require! <[ express cors ./routes/api ]>
 port = process.env.PORT || 3000
 app = express!
 
 
+app.use cors!
 app.use '/', api
 
 
