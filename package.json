@@ -1,4 +1,6 @@
 {
+  "name":"taipeihope-api",
+  "version": "0.1.0",
   "dependencies": {
     "LiveScript": "^1.2.0",
     "cheerio": "^0.17.0",
