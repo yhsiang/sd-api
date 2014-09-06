@@ -61,6 +61,24 @@ Api.route '/albums'
       error-message: null
       data: getAlbums body
 
+Api.route '/albums/:id'
+  .get (req, res) ->
+    id = req.param 'id'
+    error, response, body <- request "http://taipeihope.tw/gallery/album/#{id}.html"
+    res.json do
+      is-success: true
+      error-code: 0
+      error-message: null
+      data: getPhotos body
+
+getPhotos = (body) ->
+  $ = cheerio.load body
+  items = $ '.fsThumb' .map (,it) ->
+    do
+      title: $ it .children!next!text!
+      img-src: $ it .children!next!next!attr 'style' .match /background-image: url\((.+)\)/ .1
+  items .= to-array!
+
 getAlbums = (body) ->
   $ = cheerio.load body
   items = $ '.fsThumb' .map (,it) ->
@@ -103,7 +121,7 @@ getItems = (body) ->
     do
       id: id
       #link: origin + $ it .attr 'href'
-      link: host + "/news/#{id}"
+      link: host + "/v1/news/#{id}"
       img-src: $ it .children!attr 'src'
       caption: $ it .children!attr 'alt' .trim!
       intro-text: $ it .parent!children!children!next!children!text!trim!
