@@ -52,6 +52,26 @@ Api.route '/videos'
       error-message: null
       data: getVideos body
 
+Api.route '/albums'
+  .get (req, res) ->
+    error, response, body <- request "http://taipeihope.tw/gallery/album.html"
+    res.json do
+      is-success: true
+      error-code: 0
+      error-message: null
+      data: getAlbums body
+
+getAlbums = (body) ->
+  $ = cheerio.load body
+  items = $ '.fsThumb' .map (,it) ->
+    id = $ it .attr 'onclick' .match /\/(\w+)\.html';$/ .1
+    link = $ it .attr 'onclick' .match /javascript: window.location.href='(.+)';/ .1
+    do
+      id: id
+      link: origin + link
+      title: $ it .children!next!text!
+      img-src: $ it .children!next!next!attr 'style' .match /background-image: url\((.+)\)/ .1
+  items .= to-array!
 
 getVideos = (body) ->
   $ = cheerio.load body
